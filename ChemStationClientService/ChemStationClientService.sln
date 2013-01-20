@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Windows Desktop
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChemStationClientService", "ChemStationClientService\ChemStationClientService.csproj", "{6C283A57-F47B-42B9-B339-8AA3D06DF55E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChemStationDataProviders", "ChemStationDataProviders\ChemStationDataProviders.csproj", "{FCDAE6BD-79EF-40E9-8506-6DED8BEDED00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChemStationClients", "ChemStationClient\ChemStationClients.csproj", "{B3ADDC53-69CA-41A9-A9F5-F595A8AAD96C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C283A57-F47B-42B9-B339-8AA3D06DF55E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C283A57-F47B-42B9-B339-8AA3D06DF55E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C283A57-F47B-42B9-B339-8AA3D06DF55E}.Debug|x86.ActiveCfg = Debug|x86
+		{6C283A57-F47B-42B9-B339-8AA3D06DF55E}.Debug|x86.Build.0 = Debug|x86
+		{6C283A57-F47B-42B9-B339-8AA3D06DF55E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C283A57-F47B-42B9-B339-8AA3D06DF55E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C283A57-F47B-42B9-B339-8AA3D06DF55E}.Release|x86.ActiveCfg = Release|x86
+		{6C283A57-F47B-42B9-B339-8AA3D06DF55E}.Release|x86.Build.0 = Release|x86
+		{FCDAE6BD-79EF-40E9-8506-6DED8BEDED00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCDAE6BD-79EF-40E9-8506-6DED8BEDED00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCDAE6BD-79EF-40E9-8506-6DED8BEDED00}.Debug|x86.ActiveCfg = Debug|x86
+		{FCDAE6BD-79EF-40E9-8506-6DED8BEDED00}.Debug|x86.Build.0 = Debug|x86
+		{FCDAE6BD-79EF-40E9-8506-6DED8BEDED00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCDAE6BD-79EF-40E9-8506-6DED8BEDED00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCDAE6BD-79EF-40E9-8506-6DED8BEDED00}.Release|x86.ActiveCfg = Release|x86
+		{FCDAE6BD-79EF-40E9-8506-6DED8BEDED00}.Release|x86.Build.0 = Release|x86
+		{B3ADDC53-69CA-41A9-A9F5-F595A8AAD96C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3ADDC53-69CA-41A9-A9F5-F595A8AAD96C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3ADDC53-69CA-41A9-A9F5-F595A8AAD96C}.Debug|x86.ActiveCfg = Debug|x86
+		{B3ADDC53-69CA-41A9-A9F5-F595A8AAD96C}.Debug|x86.Build.0 = Debug|x86
+		{B3ADDC53-69CA-41A9-A9F5-F595A8AAD96C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3ADDC53-69CA-41A9-A9F5-F595A8AAD96C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3ADDC53-69CA-41A9-A9F5-F595A8AAD96C}.Release|x86.ActiveCfg = Release|x86
+		{B3ADDC53-69CA-41A9-A9F5-F595A8AAD96C}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
