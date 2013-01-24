@@ -50,6 +50,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -62,6 +63,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ChemStationDataConsumers\ChemStationDataConsumers.csproj">
+      <Project>{254cb614-8468-4e45-b8a7-1ee30c02f451}</Project>
+      <Name>ChemStationDataConsumers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ChemStationDataProviders\ChemStationDataProviders.csproj">
       <Project>{fcdae6bd-79ef-40e9-8506-6ded8beded00}</Project>
       <Name>ChemStationDataProviders</Name>

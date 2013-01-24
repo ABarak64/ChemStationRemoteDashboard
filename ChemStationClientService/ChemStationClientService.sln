@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChemStationDataProviders", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChemStationClients", "ChemStationClient\ChemStationClients.csproj", "{B3ADDC53-69CA-41A9-A9F5-F595A8AAD96C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChemStationDataConsumers", "ChemStationDataConsumers\ChemStationDataConsumers.csproj", "{254CB614-8468-4E45-B8A7-1EE30C02F451}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,12 @@ Global
 		{B3ADDC53-69CA-41A9-A9F5-F595A8AAD96C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B3ADDC53-69CA-41A9-A9F5-F595A8AAD96C}.Release|x86.ActiveCfg = Release|x86
 		{B3ADDC53-69CA-41A9-A9F5-F595A8AAD96C}.Release|x86.Build.0 = Release|x86
+		{254CB614-8468-4E45-B8A7-1EE30C02F451}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{254CB614-8468-4E45-B8A7-1EE30C02F451}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{254CB614-8468-4E45-B8A7-1EE30C02F451}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{254CB614-8468-4E45-B8A7-1EE30C02F451}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{254CB614-8468-4E45-B8A7-1EE30C02F451}.Release|Any CPU.Build.0 = Release|Any CPU
+		{254CB614-8468-4E45-B8A7-1EE30C02F451}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

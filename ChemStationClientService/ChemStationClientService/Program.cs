@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ChemStationClients;
+using System.Configuration;
 
 namespace ChemStationClientService
 {
@@ -12,7 +13,6 @@ namespace ChemStationClientService
         static void Main(string[] args)
         {
             var test = new ChemStationClient();
-            Console.WriteLine(test.DebugReport());
             Console.Read();
         }
     }

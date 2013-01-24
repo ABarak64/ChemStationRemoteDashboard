@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ChemStationDataProviders
 {
+    /// <summary>
+    /// The object model of the ChemStation current status.
+    /// </summary>
     public class ChemStationStatus
     {
         public string Status { get; set;  }
