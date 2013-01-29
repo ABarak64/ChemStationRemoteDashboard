@@ -35,6 +35,7 @@ namespace ChemStationDataProviders
         public ChemStationStatus GetCurrentStatus()
         {
             var status = new ChemStationStatus();
+            status.Time = DateTime.Now;
             var appName = string.Empty;
             try
             {
@@ -43,6 +44,8 @@ namespace ChemStationDataProviders
             catch (ApplicationException e)
             {
                 status.Status = e.Message;
+                status.MethodName = string.Empty;
+                status.SequenceName = string.Empty;
                 return status;
             }
 

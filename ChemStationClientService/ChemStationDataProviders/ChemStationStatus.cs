@@ -12,6 +12,7 @@ namespace ChemStationDataProviders
     public class ChemStationStatus
     {
         public string Status { get; set;  }
+        public DateTime Time { get; set; }
         public string MethodName { get; set;  }
         public bool MethodRunning { get; set; }
         public string SequenceName { get; set; }
@@ -19,9 +20,10 @@ namespace ChemStationDataProviders
 
         public ChemStationStatus() { }
 
-        public ChemStationStatus(string status, string methName, bool methOn, string seqName, bool seqOn)
+        public ChemStationStatus(string status, DateTime time, string methName, bool methOn, string seqName, bool seqOn)
         {
             this.Status = status;
+            this.Time = time;
             this.MethodName = methName;
             this.MethodRunning = methOn;
             this.SequenceName = seqName;
