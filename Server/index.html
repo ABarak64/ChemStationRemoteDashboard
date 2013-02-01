@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" ng-app>
+<head>
+<meta charset="utf-8">
+<title>ChemStation DashBoard</title>
+<link rel="stylesheet" href="static/styles.css">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js "></script>
+<script src="/static/controllers.js"></script>
+</head>
+<body ng-controller="StatusCtrl">
+    <h1>CHEMSTATION REMOTE DASHBOARD</h1>
+    <div class="currentStatus">
+        <h2>STATUS DETAILS</h2>
+        <table>
+            <tr>
+                <td></td>
+                <td>{{currentStatus.Time}}</td>
+            </tr>
+            <tr>
+                <td>Status:</td>
+                <td>{{currentStatus.Status}}</td>
+            </tr>
+            <tr>
+                <td>Method:</td>
+                <td ng-class="{ running: currentStatus.MethodRunning, notrunning: !currentStatus.MethodRunning}">{{currentStatus.MethodName}}</td>
+            </tr>
+            <tr>
+                <td>Sequence:</td>
+                <td ng-class="{ running: currentStatus.SequenceRunning, notrunning: !currentStatus.SequenceRunning}">{{currentStatus.SequenceName}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="statusList">
+        <h2>RECENT</h2>
+        <ul>
+            <li ng-repeat="status in statuses" ng-class="{isSelected: status.Id == currentStatus.Id}">
+                <a ng-click="viewStatus(status)">{{status.Time}}<br/>{{status.Status}}</a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
