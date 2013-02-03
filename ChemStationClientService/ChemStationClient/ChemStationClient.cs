@@ -80,6 +80,7 @@ namespace ChemStationClients
             _transmissionTimer = new Timer(1000 * 60 * intervalMinutes);
             _transmissionTimer.Elapsed += (s, e) => { GetData(); };
             _transmissionTimer.Enabled = true;
+            GetData();
         }
 
         /// <summary>
