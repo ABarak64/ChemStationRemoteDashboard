@@ -94,9 +94,14 @@ h2
 }
 ul
 {
+    background-color:#3E3E3E;
     list-style-type: none;
     padding:0px;
     margin:0px;
+}
+ul input
+{
+    margin-left: 65px;
 }
 a
 {

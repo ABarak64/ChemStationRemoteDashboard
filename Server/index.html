@@ -5,7 +5,7 @@
 <title>ChemStation DashBoard</title>
 <link rel="stylesheet" href="static/styles.css">
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js "></script>
-<script src="/static/controllers.js"></script>
+<script src="/static/testcontrollers.js"></script>
 </head>
 <body ng-controller="StatusCtrl">
     <h1>CHEMSTATION REMOTE DASHBOARD</h1>
@@ -33,9 +33,11 @@
     <div class="statusList">
         <h2>RECENT</h2>
         <ul>
+            <input type="image" src="/static/arrow_up.png" ng:click="statusForward(currentStatus.Id)"/>
             <li ng-repeat="status in statuses" ng-class="{isSelected: status.Id == currentStatus.Id}">
                 <a ng-click="viewStatus(status)">{{status.Time}}<br/>{{status.Status}}</a>
             </li>
+            <input type="image" src="/static/arrow_down.png" ng:click="statusBackward(currentStatus.Id)"/>
         </ul>
     </div>
 </body>

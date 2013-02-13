@@ -4,12 +4,43 @@ import sqlite3 as lite
 
 DATABASE = '/home/WhatupHPLC/chemstationdata.db'
 
+# Helper method to ORMify a dataset.
+def status_dataset_to_object(dataset):
+    obj = {
+        'Id' : dataset['status_id'],
+        'Status' : dataset['status'],
+        'Time' : dataset['time'],
+        'SequenceName' : dataset['sequence'],
+        'MethodName' : dataset['method'],
+        'SequenceRunning' : True if dataset['sequenceOn'] == 1 else False,
+        'MethodRunning' : True if dataset['methodOn'] == 1 else False
+        }
+    return obj
+
 app = Flask(__name__)
 
 # The requester wants the dashboard view.
 @app.route('/')
 def serve_dashboard():
      return send_from_directory('/home/WhatupHPLC/mysite', 'index.html')
+
+# The requester wants a particular ChemStation status.
+@app.route('/chemstationstatus/<id>')
+def api_get_chemstation_status(id):
+    con = lite.connect(DATABASE)
+    with con:
+        con.row_factory = lite.Row
+        cur = con.cursor()
+        vals_to_insert = (id, )
+        cur.execute("SELECT * FROM status WHERE status_id = ?;", vals_to_insert)
+        row = cur.fetchone()
+        if row == None:
+            statusObj = {}
+        else:
+            statusObj = status_dataset_to_object(row)
+
+    resp = Response(json.dumps(statusObj), status=200, mimetype='application/json')
+    return resp
 
 # The requester wants a variable amount of the most recent ChemStation statuses.
 @app.route('/chemstationstatus/last/<count>')
@@ -24,15 +55,7 @@ def api_get_recent_chemstation_status(count):
         rows = cur.fetchall()
 
         for row in rows:
-            statusObj = {
-            'Id' : row['status_id'],
-            'Status' : row['status'],
-            'Time' : row['time'],
-            'SequenceName' : row['sequence'],
-            'MethodName' : row['method'],
-            'SequenceRunning' : True if row['sequenceOn'] == 1 else False,
-            'MethodRunning' : True if row['methodOn'] == 1 else False
-            }
+            statusObj = status_dataset_to_object(row)
             statusSet.append(statusObj)
 
     resp = Response(json.dumps(statusSet), status=200, mimetype='application/json')
