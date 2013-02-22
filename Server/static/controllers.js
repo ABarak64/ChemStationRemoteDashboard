@@ -25,8 +25,8 @@ function StatusCtrl($scope, $http, $timeout) {
     };
 
     // Update the viewModel by dropping the last item and adding a new one on top.
-    $scope.statusForward = function(currentStatusId) {
-        $http.get('chemstationstatus/' + (currentStatusId + 1)).success(function(data) {
+    $scope.statusForward = function() {
+        $http.get('chemstationstatus/' + ($scope.statuses[0].Id + 1)).success(function(data) {
             if (!isEmpty(data)) {
                 $scope.statuses.pop();
                 $scope.statuses.unshift(data);
@@ -37,8 +37,8 @@ function StatusCtrl($scope, $http, $timeout) {
     };
 
     // Update the viewModel by dropping the first item and adding a new one on the bottom.
-    $scope.statusBackward = function(currentStatusId) {
-        $http.get('chemstationstatus/' + (currentStatusId - statusCount)).success(function(data) {
+    $scope.statusBackward = function() {
+        $http.get('chemstationstatus/' + ($scope.statuses[0].Id - statusCount)).success(function(data) {
             if (!isEmpty(data)) {
                 $scope.statuses.shift();
                 $scope.statuses.push(data);

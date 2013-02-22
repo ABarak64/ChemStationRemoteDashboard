@@ -1,44 +1,57 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" ng-app>
-<head>
-<meta charset="utf-8">
-<title>ChemStation DashBoard</title>
-<link rel="stylesheet" href="static/styles.css">
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js "></script>
-<script src="/static/testcontrollers.js"></script>
-</head>
-<body ng-controller="StatusCtrl">
-    <h1>CHEMSTATION REMOTE DASHBOARD</h1>
-    <div class="currentStatus">
-        <h2>STATUS DETAILS</h2>
-        <table>
-            <tr>
-                <td></td>
-                <td>{{currentStatus.Time}}</td>
-            </tr>
-            <tr>
-                <td>Status:</td>
-                <td>{{currentStatus.Status}}</td>
-            </tr>
-            <tr>
-                <td>Method:</td>
-                <td ng-class="{ running: currentStatus.MethodRunning, notrunning: !currentStatus.MethodRunning}">{{currentStatus.MethodName}}</td>
-            </tr>
-            <tr>
-                <td>Sequence:</td>
-                <td ng-class="{ running: currentStatus.SequenceRunning, notrunning: !currentStatus.SequenceRunning}">{{currentStatus.SequenceName}}</td>
-            </tr>
-        </table>
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChemStation DashBoard</title>
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/extrastyles.css">
+ </head>
+ <body ng-controller="StatusCtrl">
+    <div class="container">
+        <div class="page-header">
+            <h1>CHEMSTATION REMOTE DASHBOARD</h1>
+        </div>
+        <div class="row">
+            <div class="span3 offset3 currentStatus">
+                <h2>STATUS DETAILS</h2>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td>{{currentStatus.Time}}</td>
+                        </tr>
+                        <tr>
+                            <td>Status:</td>
+                            <td>{{currentStatus.Status}}</td>
+                        </tr>
+                        <tr>
+                            <td>Method:</td>
+                            <td ng-class="{ running: currentStatus.MethodRunning, notrunning: !currentStatus.MethodRunning}">{{currentStatus.MethodName}}</td>
+                        </tr>
+                        <tr>
+                            <td>Sequence:</td>
+                            <td ng-class="{ running: currentStatus.SequenceRunning, notrunning: !currentStatus.SequenceRunning}">{{currentStatus.SequenceName}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="span3 statusList">
+                <h2>RECENT</h2>
+                <ul>
+                    <input type="image" src="/static/arrow_up.png" ng:click="statusForward()"/>
+                    <li ng-repeat="status in statuses" ng-class="{isSelected: status.Id == currentStatus.Id}">
+                        <a ng-click="viewStatus(status)">{{status.Time}}<br/>{{status.Status}}</a>
+                    </li>
+                    <input type="image" src="/static/arrow_down.png" ng:click="statusBackward()"/>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="statusList">
-        <h2>RECENT</h2>
-        <ul>
-            <input type="image" src="/static/arrow_up.png" ng:click="statusForward(currentStatus.Id)"/>
-            <li ng-repeat="status in statuses" ng-class="{isSelected: status.Id == currentStatus.Id}">
-                <a ng-click="viewStatus(status)">{{status.Time}}<br/>{{status.Status}}</a>
-            </li>
-            <input type="image" src="/static/arrow_down.png" ng:click="statusBackward(currentStatus.Id)"/>
-        </ul>
-    </div>
-</body>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="/static/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js "></script>
+    <script src="/static/controllers.js"></script>
+ </body>
 </html>
