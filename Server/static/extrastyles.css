@@ -45,7 +45,12 @@ h2
     border-spacing: 5px;
     color:#000000;
 }
-
+.currentStatus p
+{
+    margin-top:10px;
+    margin-left:10px;
+    color:black;
+}
 .running
 {
     border-style:solid;
@@ -78,6 +83,7 @@ h2
     color:#FFFFFF;
     padding-left:10px;
     font-size: 1em;
+    cursor:pointer;
 }
 ul
 {
@@ -101,4 +107,20 @@ li.isSelected, .isSelected a
 {
     color:#3E3E3E;
     background-color:white;
+}
+svg
+{
+    display: block;
+    margin: auto;
+    max-height: 350px;
+    height: 350px;
+    height:auto !important;
+}
+.slice path
+{
+  stroke: #fff;
+}
+text
+{
+    text-rendering: optimize-legibility;
 }

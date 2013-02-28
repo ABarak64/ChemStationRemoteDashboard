@@ -61,6 +61,35 @@ def api_get_recent_chemstation_status(count):
     resp = Response(json.dumps(statusSet), status=200, mimetype='application/json')
     return resp
 
+# The requester wants the status statistics on a variable amount of the last statuses.
+@app.route('/chemstationstatus/statistics/<count>')
+def api_get_chemstation_status_stats(count):
+    con = lite.connect(DATABASE)
+    statSet = []
+    with con:
+        con.row_factory = lite.Row
+        cur = con.cursor()
+        vals_to_insert = (count, )
+        cur.execute("""SELECT status, count(*) AS count FROM (SELECT status FROM status
+            ORDER BY status_id DESC LIMIT ?) GROUP BY status;""", vals_to_insert)
+        rows = cur.fetchall()
+
+        for row in rows:
+            obj = {
+                'label' : row['status'],
+                'value' : row['count']
+                }
+            statSet.append(obj)
+
+        cur.execute("""SELECT substr(time,0,10) AS time FROM status WHERE
+            status_id = ((SELECT MAX(status_id) from status) - ?);""", vals_to_insert)
+        row = cur.fetchone()
+        stats = { 'time' : row['time'],
+                  'data' : statSet }
+
+    resp = Response(json.dumps(stats), status=200, mimetype='application/json')
+    return resp
+
 # The requester wants to deliver a new Chemstation status.
 @app.route('/chemstationstatus', methods=['POST'])
 def api_chemstationstatus():

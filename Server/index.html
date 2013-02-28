@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="chemstation">
  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
             <h1>CHEMSTATION REMOTE DASHBOARD</h1>
         </div>
         <div class="row">
-            <div class="span3 offset3 currentStatus">
+            <div class="span4 offset2 currentStatus">
                 <h2>STATUS DETAILS</h2>
                 <table class="table">
                     <tbody>
@@ -37,15 +37,24 @@
                 </table>
             </div>
 
-            <div class="span3 statusList">
+            <div class="span4 statusList">
                 <h2>RECENT</h2>
                 <ul>
                     <input type="image" src="/static/arrow_up.png" ng:click="statusForward()"/>
-                    <li ng-repeat="status in statuses" ng-class="{isSelected: status.Id == currentStatus.Id}">
-                        <a ng-click="viewStatus(status)">{{status.Time}}<br/>{{status.Status}}</a>
+                    <li ng-repeat="status in statuses" ng-class="{isSelected: status.Id == currentStatus.Id}" ng-click="viewStatus(status)">
+                        {{status.Time}}<br/>{{status.Status}}
                     </li>
                     <input type="image" src="/static/arrow_down.png" ng:click="statusBackward()"/>
                 </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span4 offset2 currentStatus">
+                <h2>STATISTICS</h2>
+                <div>
+                    <p>Status since {{data.time}}:</p>
+                    <status-chart val="data"></status-chart>
+                </div>
             </div>
         </div>
     </div>
@@ -53,5 +62,6 @@
     <script src="/static/bootstrap.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js "></script>
     <script src="/static/controllers.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
  </body>
 </html>
