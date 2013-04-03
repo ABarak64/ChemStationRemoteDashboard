@@ -1,6 +1,25 @@
+.dot
+{
+    position:relative;
+    width:7px;
+    height:7px;
+    bottom:20px;
+    left:200px;
+}
+[ng\:cloak], [ng-cloak], .ng-cloak
+{
+  display: none !important;
+}
 body
 {
-    background: url(/static/mole_6.png);
+    background: url(/static/Tannin.jpg);
+    background-repeat:repeat-y;
+    padding:0;
+}
+.container
+{
+    padding-left:20px;
+    padding-right:20px;
 }
 .currentStatus
 {
@@ -12,15 +31,19 @@ body
     background-color: #FFFFFF;
     font-family: 'Segoe UI Semibold','Segoe UI','Lucida Grande',Verdana,Arial,Helvetica,sans-serif;
 }
-h1
+.hero-unit
 {
-    padding:50px 10px 10px 20px;
-    margin:0px;
     background-color:#3E3E3E;
     color:#FFFFFF;
-    font-size: 2.7em;
+    border-radius: 0px;
+    padding:40px;
+}
+h1
+{
+    font-size: 2.5em !important;
     font-weight: bold;
     font-family: 'Segoe UI Semibold','Segoe UI','Lucida Grande',Verdana,Arial,Helvetica,sans-serif;
+    margin-top:30px;
 }
 h2
 {
@@ -73,6 +96,7 @@ h2
     border-radius: 10px;
     border-color:#3E3E3E;
     font-family: 'Segoe UI Semibold','Segoe UI','Lucida Grande',Verdana,Arial,Helvetica,sans-serif;
+    max-width:250px;
 }
 .statusList li
 {
@@ -107,14 +131,6 @@ li.isSelected, .isSelected a
 {
     color:#3E3E3E;
     background-color:white;
-}
-svg
-{
-    display: block;
-    margin: auto;
-    max-height: 350px;
-    height: 350px;
-    height:auto !important;
 }
 .slice path
 {

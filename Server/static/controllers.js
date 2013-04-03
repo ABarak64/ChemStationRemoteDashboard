@@ -4,6 +4,7 @@
 
 function StatusCtrl($scope, $http, $timeout) {
     var statusCount = 6;
+    var arrowLock = false;
 
     var getFromApi = function() {
         $http.get('chemstationstatus/last/' + statusCount).success(function(data) {
@@ -30,25 +31,38 @@ function StatusCtrl($scope, $http, $timeout) {
 
     // Update the viewModel by dropping the last item and adding a new one on top.
     $scope.statusForward = function() {
-        $http.get('chemstationstatus/' + ($scope.statuses[0].Id + 1)).success(function(data) {
-            if (!isEmpty(data)) {
-                $scope.statuses.pop();
-                $scope.statuses.unshift(data);
-                $scope.currentStatus = $scope.statuses[0];
-            }
-        });
-
+        // The arrowLock is there so that people don't queue up a bunch of AJAX calls for the same next status,
+        //    which will mess up the status list by adding duplicates.
+        if (!arrowLock) {
+            arrowLock = true;
+            $http.get('chemstationstatus/' + ($scope.statuses[0].Id + 1)).success(function(data) {
+                if (!isEmpty(data)) {
+                    $scope.statuses.pop();
+                    $scope.statuses.unshift(data);
+                    $scope.currentStatus = $scope.statuses[0];
+                }
+                arrowLock = false;
+            }).error(function() {
+                arrowLock = false;
+                });
+        }
     };
 
     // Update the viewModel by dropping the first item and adding a new one on the bottom.
     $scope.statusBackward = function() {
-        $http.get('chemstationstatus/' + ($scope.statuses[0].Id - statusCount)).success(function(data) {
-            if (!isEmpty(data)) {
-                $scope.statuses.shift();
-                $scope.statuses.push(data);
-                $scope.currentStatus = $scope.statuses[0];
-            }
-        });
+        if (!arrowLock) {
+            arrowLock = true;
+            $http.get('chemstationstatus/' + ($scope.statuses[0].Id - statusCount)).success(function(data) {
+                if (!isEmpty(data)) {
+                    $scope.statuses.shift();
+                    $scope.statuses.push(data);
+                    $scope.currentStatus = $scope.statuses[0];
+                }
+                arrowLock = false;
+            }).error(function() {
+                    arrowLock = false;
+                });
+        }
     };
 }
 
@@ -81,7 +95,7 @@ angular.module('chemstation', []).directive('statusChart', function($http) {
                 return;
                 }
                 // Not interested in displaying statuses that are very uncommon for statistics purposes.
-                data = newVal.data.filter(function(item) { return item.value >= 2;});
+                data = newVal.data.filter(function(item) { return item.value >= 3;});
 
                 var vis = d3.select(rootElement)
                     .append("svg:svg")

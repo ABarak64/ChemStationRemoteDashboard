@@ -6,14 +6,20 @@
     <title>ChemStation DashBoard</title>
     <link rel="stylesheet" href="/static/bootstrap.min.css">
     <link rel="stylesheet" href="/static/extrastyles.css">
+    <!--[if IE]><link rel="stylesheet" href="/static/extrastyles_ie.css"><![endif]-->
+    <!--[if !IE]><!--> <link rel="stylesheet" href="/static/extrastyles_nonie.css"> <!--<![endif]-->
  </head>
  <body ng-controller="StatusCtrl">
-    <div class="container">
-        <div class="page-header">
-            <h1>CHEMSTATION REMOTE DASHBOARD</h1>
+    <div class="hero-unit">
+        <div class="container">
+            <div class="row">
+                <h1>CHEM STATION REMOTE DASHBOARD</h1>
+            </div>
         </div>
+    </div>
+    <div class="container">
         <div class="row">
-            <div class="span4 offset2 currentStatus">
+            <div ng-cloak class="span4 offset2 currentStatus">
                 <h2>STATUS DETAILS</h2>
                 <table class="table">
                     <tbody>
@@ -37,19 +43,20 @@
                 </table>
             </div>
 
-            <div class="span4 statusList">
+            <div ng-cloak class="span4 statusList">
                 <h2>RECENT</h2>
                 <ul>
                     <input type="image" src="/static/arrow_up.png" ng:click="statusForward()"/>
                     <li ng-repeat="status in statuses" ng-class="{isSelected: status.Id == currentStatus.Id}" ng-click="viewStatus(status)">
                         {{status.Time}}<br/>{{status.Status}}
+                        <div class='dot' ng-class="{ running: status.SequenceRunning && status.MethodRunning, notrunning: !status.SequenceRunning || !status.MethodRunning}"></div>
                     </li>
                     <input type="image" src="/static/arrow_down.png" ng:click="statusBackward()"/>
                 </ul>
             </div>
         </div>
         <div class="row">
-            <div class="span4 offset2 currentStatus">
+            <div ng-cloak class="span4 offset2 currentStatus">
                 <h2>STATISTICS</h2>
                 <div>
                     <p>Status since {{data.time}}:</p>
